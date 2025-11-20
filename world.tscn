@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://b65v7madt4srg"]
+
+[ext_resource type="PackedScene" uid="uid://bcx67rjcit3lk" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://c6i33px4sd4s4" path="res://player.gd" id="2_tlwt5"]
+[ext_resource type="Script" uid="uid://bf317fwpjs6hd" path="res://giga_cube.gd" id="3_aqk2v"]
+[ext_resource type="Script" uid="uid://cwaf1mk2320km" path="res://maestro_cam/maestro_cam.gd" id="4_aqk2v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tlwt5"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_aqk2v"]
+sky_material = SubResource("ProceduralSkyMaterial_tlwt5")
+
+[sub_resource type="Environment" id="Environment_036b0"]
+background_mode = 2
+sky = SubResource("Sky_aqk2v")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlwt5"]
+size = Vector3(2.3266602, 3.2800293, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="World" type="Node3D" unique_id=54029323]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=888817312]
+environment = SubResource("Environment_036b0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1280977406]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 11, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1213248031 instance=ExtResource("1_f3sb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016250014, 16.020065)
+script = ExtResource("2_tlwt5")
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1106212641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+use_collision = true
+size = Vector3(50, 0.1, 50)
+
+[node name="Room" type="Node3D" parent="." unique_id=663784975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.919594)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Room" unique_id=1205996368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03982544, 2.1310887, 2.9866428)
+size = Vector3(10.129578, 4.322754, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Room" unique_id=1208611934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.164505, 2.1337743, -10.245639)
+size = Vector3(3.8802185, 4.328125, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Room" unique_id=1396448654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029984474, 3.7978368, -10.245639)
+size = Vector3(2.3931122, 1, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Room" unique_id=1680998196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0799766, 2.1337743, -10.245639)
+size = Vector3(3.8802185, 4.328125, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Room" unique_id=390617779]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.585184, 2.1347508, -3.6293602)
+size = Vector3(14.235687, 4.330078, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Room" unique_id=1571394849]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.521855, 2.140366, -3.6293602)
+size = Vector3(14.235687, 4.3413086, 1)
+
+[node name="MaestroTrigger" type="Area3D" parent="Room" unique_id=1145537283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6685843, -10.2487755)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/MaestroTrigger" unique_id=1829164183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04272461, -0.033081055, 0)
+shape = SubResource("BoxShape3D_tlwt5")
+
+[node name="GigaCube" type="CSGBox3D" parent="." unique_id=1688205659]
+transform = Transform3D(0.4999998, -0.49999976, 0.7071065, 0.85355294, 0.14644647, -0.49999973, 0.14644647, 0.853553, 0.49999985, 0, 9, -14)
+size = Vector3(5, 5, 5)
+material = SubResource("StandardMaterial3D_f3sb7")
+script = ExtResource("3_aqk2v")
+
+[node name="MaestroCam" type="Camera3D" parent="." unique_id=304788838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.424034, 11.705689, -5.3799424)
+script = ExtResource("4_aqk2v")
+manual_exit_key = &"pause"
