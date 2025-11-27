@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b65v7madt4srg"]
+[gd_scene load_steps=11 format=3 uid="uid://b65v7madt4srg"]
 
 [ext_resource type="PackedScene" uid="uid://bcx67rjcit3lk" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://c6i33px4sd4s4" path="res://player.gd" id="2_tlwt5"]
+[ext_resource type="Script" uid="uid://c1jgognevyfpw" path="res://maestro_cam/maestro_trigger.gd" id="3_036b0"]
 [ext_resource type="Script" uid="uid://bf317fwpjs6hd" path="res://giga_cube.gd" id="3_aqk2v"]
 [ext_resource type="Script" uid="uid://cwaf1mk2320km" path="res://maestro_cam/maestro_cam.gd" id="4_aqk2v"]
 
@@ -71,6 +72,7 @@ size = Vector3(14.235687, 4.3413086, 1)
 
 [node name="MaestroTrigger" type="Area3D" parent="Room" unique_id=1145537283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6685843, -10.2487755)
+script = ExtResource("3_036b0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room/MaestroTrigger" unique_id=1829164183]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04272461, -0.033081055, 0)
